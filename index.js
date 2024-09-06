@@ -35,12 +35,13 @@ var server = http.createServer(function(req,res){
       var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
 
       // Construct the data object to send to the handler
+      var newpayload = "ciao"
       var data = {
           'trimmedPath' : trimmedPath,
           'queryStringObject' : queryStringObject,
           'method' : method,
           'headers' : headers,
-          'payload' : payload
+          'payload' : newpayload
         };
 
         // Route the request to the handler specified in the router
@@ -76,7 +77,7 @@ var handlers = {};
 
 // Hello
 handlers.hello = function(data,callback){
-    callback(200,{"output": "Welcome dear"});
+    callback(200,{'output': 'Welcome dear'});
 };
 
 // Not found handler
